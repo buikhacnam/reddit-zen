@@ -72,6 +72,9 @@ const MainContent = styled.div`
     margin: 0 auto;
     width: 65vw;
     padding-bottom: 2rem;
+    @media (max-width: 768px) {
+    width: 95vw;
+  }
     
 `
 const Container = styled.div`
