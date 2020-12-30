@@ -80,5 +80,5 @@ const Container = styled.div`
 const Controls = styled.div`
     margin-bottom: 3rem;
     text-align: center;
-    
+    margin-top: 1rem;
 `
