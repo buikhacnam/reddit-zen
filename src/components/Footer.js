@@ -14,11 +14,15 @@ const FooterWrapper = styled.div`
     position: fixed;
     bottom: 0;
     width: 100vw;
-    background-color: #FF4500;
+    background-color: #ffffff;
     padding-bottom: 0;
     text-align: center;
-    & p a {
-        color: #ffffff;
+    & a {
+        color: #FF4500;
+        font-size: 0.7rem;
+    }
+    & p {
+        font-size: 0.7rem;
     }
     
 `
