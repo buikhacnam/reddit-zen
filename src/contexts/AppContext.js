@@ -13,16 +13,11 @@ const deFaultSubs = {'Shower Thoughts': ShowerThoughtsApi, 'Today I Fucked Up': 
 export default function AppContext({children}) {
     const [source, setSource] = useState([]);
     const [save, setSave] = useState(localData?(JSON.parse(localData)):[]);
-    const [fetch, setFetch] = useState(0);
     const [apiSource, setApiSource] = useState(TifuApi);
     const [allApi, setAllApi] = useState((localSubs)? (JSON.parse(localSubs)): deFaultSubs);
     const [err, setErr] = useState(false);
+    const [loading, setLoading] = useState(true);
    
-    setTimeout(() => {
-        setFetch(fetch + 1);
-    }, 2000)
-
-
     function handleApiSource(source) {
         setApiSource(allApi[source])
     }
@@ -49,23 +44,25 @@ export default function AppContext({children}) {
     },[save])
 
     useEffect(() => {
-        localStorage.setItem('subs', JSON.stringify(allApi));
-        
+        localStorage.setItem('subs', JSON.stringify(allApi));      
     },[allApi])
    
     useEffect(() => {
+        setLoading(true);
         axios.get(apiSource)
             .then(results => {
                 let redditData = results.data.data.children;
                 setSource(redditData);
+                setLoading(false);
                 setErr(false);
             }).catch(err => {
+                setLoading(false);
                 setErr(true);
             });
         
     }, [apiSource]);
     return (
-        <Provider value={{source, save, handleSave, handleUnsave, handleClearSubs, apiSource, handleApiSource, allApi, setAllApi, err}}>
+        <Provider value={{source, save, handleSave, handleUnsave, handleClearSubs, apiSource, handleApiSource, allApi, setAllApi, err, loading}}>
             {children}
         </Provider>
     )

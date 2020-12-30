@@ -12,7 +12,7 @@ export default function Footer() {
 const FooterWrapper = styled.div`
     margin-top: 1rem;
     position: fixed;
-    bottom: 0;
+    bottom: -0.5rem;
     width: 100vw;
     background-color: #ffffff;
     padding-bottom: 0;

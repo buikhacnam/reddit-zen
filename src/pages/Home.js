@@ -2,12 +2,12 @@ import React, {useContext, useState} from 'react';
 import ManageSubs from '../components/ManageSubs'
 import {RedditContext} from '../contexts/AppContext';
 import Stories from '../components/Stories';
-import { Menu, Dropdown, Space,  Modal, Button } from 'antd';
+import { Menu, Dropdown, Space,  Modal, Button,Spin } from 'antd';
 import { RedditOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
 export default function Home() {
-    const {handleApiSource, allApi, err} = useContext(RedditContext);
+    const {handleApiSource, allApi, err, loading} = useContext(RedditContext);
     const [nameSub, setNameSub] = useState("Today I Fucked Up")
     // drop down menu
     function handleMenuClick(e) {
@@ -41,7 +41,7 @@ export default function Home() {
             <Controls>
                 <Space wrap>
                     <Dropdown.Button  overlay={menu} type='danger' >
-                        Reddit Subs : {nameSub}
+                        Reddit Subs : {nameSub} 
                     </Dropdown.Button>
                 </Space>
 
@@ -49,7 +49,7 @@ export default function Home() {
                     Add New Reddit Subs
                 </Button>
             </Controls>
-            <h2 style={{color: '#FF4500', marginBottom: '2rem', paddingLeft: '1rem'}}>{nameSub}</h2>
+            <h2 style={{color: '#FF4500', marginBottom: '2rem', paddingLeft: '1rem'}}>{nameSub} &nbsp; {(loading) && <Spin />}</h2>
 
             <Modal
                 title="Customize Reddit Subs"
@@ -61,7 +61,8 @@ export default function Home() {
             >
                 <ManageSubs />
             </Modal>
-            {(err)? <h2 style={{paddingLeft: '1rem'}}>Error. Try refresh or check the sub's URL</h2> : <Stories />}
+            {(err) && <h2 style={{paddingLeft: '1rem'}}>Error. Try refresh or check the sub's URL</h2>}
+            {(!err && !loading) && <Stories />}
             
         </MainContent>
         </Container>

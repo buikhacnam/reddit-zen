@@ -9,30 +9,30 @@ export default function Header() {
     return (
         <NavBar>
             <NamSite>
-                <h1>Reddit Zen</h1>
+                <h2 style={{marginLeft: '1rem'}}>Reddit Zen</h2>
             </NamSite>
 
             <LinkWrapper>
-                <Link style={{color: '#ffffff', fontSize:'1.1rem'}} to="/">Home</Link>
-                <Link style={{color: '#ffffff', fontSize:'1.1rem'}} to="/saved">Saved Posts ({save.length})</Link>
+                <Link style={{color: '#ffffff', textDecoration: 'underline'}} to="/">Home</Link>
+                <Link style={{color: '#ffffff', textDecoration: 'underline'}} to="/saved">Saved Posts ({save.length})</Link>
             </LinkWrapper>
 
-            <div>
-                <img src="https://logos-download.com/wp-content/uploads/2016/06/Reddit_logo_Snoos_head_1SVG.svg" alt="logo" height="35px"/>
-            </div>
+            <ImageWrapper>
+                <img src="https://logos-download.com/wp-content/uploads/2016/06/Reddit_logo_Snoos_head_1SVG.svg" alt="logo" height="30px"/>
+            </ImageWrapper>
         </NavBar>
     )
 }
 
 const NavBar = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     justify-content: center;
     justify-items: center;
-    padding-bottom: 0.5rem;
-    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
     background-color: #FF4500;
-    & h1{
+    & h2{
         color: #ffffff;
     }
 `
@@ -43,6 +43,10 @@ const LinkWrapper = styled.div `
     
 `
 const NamSite = styled.div `
+   
+`
+
+const ImageWrapper = styled.div `
     display: grid;
     align-items: center;
     align-content: center;
