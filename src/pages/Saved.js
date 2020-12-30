@@ -3,7 +3,7 @@ import SavedStories from '../components/SavedStories'
 
 export default function Saved() {
     return (
-        <div>
+        <div style={{paddingBottom: '1rem'}}>
             <SavedStories />
         </div>
     )
