@@ -18,7 +18,7 @@ export default function ManageSubs() {
         link = link.slice(0, -1);
       } 
       setAllApi(prev => {
-        return {...prev, [name]: link + '.json'};
+        return {[name]: link + '.json', ...prev};
       })
       form.resetFields();
     };
@@ -41,7 +41,7 @@ export default function ManageSubs() {
 
     return (
         <div>
-          <a href='https://www.reddit.com/' target="_blank" rel="noreferrer" style={{textAlign: 'center'}}>New to Reddit?</a>
+          <a href='https://www.reddit.com/' target="_blank" rel="noreferrer" style={{fontSize: "0.8rem", margin: '1rem'}}>New to Reddit?</a>
           <Form
             form={form}
             {...layout}
@@ -83,7 +83,11 @@ export default function ManageSubs() {
               </Button>
             </Form.Item>
          </Form>
-         
+         <div style={{fontSize: "0.8rem", margin: '1rem'}}>
+          <strong>Example:</strong>
+          <p><strong>Name Sub:</strong> Malicious Compliance -<strong>&ensp;Sub URL:</strong> https://www.reddit.com/r/MaliciousCompliance/</p>
+          
+         </div>
          <AllSubs />
         </div>
     )

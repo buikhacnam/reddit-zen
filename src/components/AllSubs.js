@@ -1,10 +1,21 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {RedditContext} from '../contexts/AppContext';
 import { List, Button, } from 'antd';
 
 export default function AllSubs() {
-    const {allApi, handleClearSubs} = useContext(RedditContext);
+    const {allApi, setAllApi} = useContext(RedditContext);
+    const [isDelete, setIsDelete] = useState(false);
     
+    
+    async function handleClearSubs (item) {
+      const newApi = allApi
+     await delete newApi[item];
+      setAllApi((newApi) => {
+        return {...newApi};
+      });
+      localStorage.setItem('subs', JSON.stringify(allApi));
+      console.log(allApi)
+    }
     return (
         <>
     

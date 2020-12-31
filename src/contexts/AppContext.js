@@ -5,10 +5,11 @@ export const RedditContext = createContext();
 const ShowerThoughtsApi = 'https://www.reddit.com/r/Showerthoughts.json';
 const TifuApi = 'https://www.reddit.com/r/tifu.json';
 const UnpopularOpinionApi = 'https://www.reddit.com/r/unpopularopinion.json';
+const LearnprogrammingApi = 'https://www.reddit.com/r/learnprogramming.json';
 const {Provider} = RedditContext;
 const localData = localStorage.getItem('stories');
 const localSubs = localStorage.getItem('subs');
-const deFaultSubs = {'Shower Thoughts': ShowerThoughtsApi, 'Today I Fucked Up': TifuApi, 'Unpopular Opinion': UnpopularOpinionApi};
+const deFaultSubs = {'Shower Thoughts': ShowerThoughtsApi, 'Today I Fucked Up': TifuApi, 'Unpopular Opinion': UnpopularOpinionApi, 'Learn Programming' : LearnprogrammingApi};
 
 export default function AppContext({children}) {
     const [source, setSource] = useState([]);
@@ -33,12 +34,6 @@ export default function AppContext({children}) {
         setSave(newSave);
     }
 
-    function handleClearSubs(item){
-        delete allApi[item];
-        setAllApi(allApi);
-        localStorage.setItem('subs', JSON.stringify(allApi));
-    }
-   
     useEffect(() => {
         localStorage.setItem('stories', JSON.stringify(save));
     },[save])
@@ -62,7 +57,7 @@ export default function AppContext({children}) {
         
     }, [apiSource]);
     return (
-        <Provider value={{source, save, handleSave, handleUnsave, handleClearSubs, apiSource, handleApiSource, allApi, setAllApi, err, loading}}>
+        <Provider value={{source, save, handleSave, handleUnsave, apiSource, handleApiSource, allApi, setAllApi, err, loading}}>
             {children}
         </Provider>
     )
