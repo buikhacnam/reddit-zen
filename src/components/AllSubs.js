@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {RedditContext} from '../contexts/AppContext';
 import { List, Button, } from 'antd';
 
 export default function AllSubs() {
     const {allApi, setAllApi} = useContext(RedditContext);
-    const [isDelete, setIsDelete] = useState(false);
+    
     
     
     async function handleClearSubs (item) {
