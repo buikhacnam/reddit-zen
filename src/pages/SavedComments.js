@@ -1,14 +1,13 @@
 import React from 'react'
-import SavedStories from '../components/SavedStories'
+import AllCommentsSaved from '../components/AllCommentsSaved'
 import styled from 'styled-components';
 
-export default function Saved() {
+export default function SavedComments() {
     return (
-        <>
-            
+        <> 
             <MainContent style={{paddingBottom: '1rem'}}>
-                 <h2 style={{color: '#FF4500', marginBottom: '2rem', paddingLeft: '1rem', marginTop: '1rem'}}>All Posts Saved</h2>
-                <SavedStories />
+                 <h2 style={{color: '#FF4500', marginBottom: '2rem', paddingLeft: '1rem', marginTop: '1rem'}}>All Comments Saved</h2>
+                <AllCommentsSaved />
             </MainContent>
         </>
     )

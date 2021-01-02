@@ -8,9 +8,9 @@ export default function ManageSubs() {
 
     const {setAllApi} = useContext(RedditContext);
 
-    //Form
     const [form] = Form.useForm();
 
+    // add a new sub
     const onFinish = (values) => {
       let name = values['Sub Reddit Name'];
       let link = values['Sub Reddit Link'];

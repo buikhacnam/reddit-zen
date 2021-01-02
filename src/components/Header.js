@@ -4,31 +4,29 @@ import {Link} from 'react-router-dom';
 import {RedditContext} from '../contexts/AppContext';
 export default function Header() {
     
-    const {save} = useContext(RedditContext);
+    const {save, savedCm} = useContext(RedditContext);
 
     return (
         <NavBar>
             <NamSite>
-                <h2 style={{marginLeft: '1rem'}}>Reddit Zen</h2>
+                <h2 style={{marginLeft: '1rem'}}><Link style={{color: '#ffffff', }} to="/">Reddit Zen</Link></h2>
             </NamSite>
 
             <LinkWrapper>
-                <Link style={{color: '#ffffff', textDecoration: 'underline'}} to="/">Home</Link>
-                <Link style={{color: '#ffffff', textDecoration: 'underline'}} to="/saved">Saved Posts ({save.length})</Link>
+                <Link style={{color: '#ffffff', }} to="/">Home</Link>
+                <Link style={{color: '#ffffff', }} to="/saved">Posts Saved ({save.length})</Link>
+                <Link style={{color: '#ffffff', }} to="/comments">Comments Saved ({savedCm.length})</Link>
             </LinkWrapper>
 
-            <ImageWrapper>
-                <img src="https://logos-download.com/wp-content/uploads/2016/06/Reddit_logo_Snoos_head_1SVG.svg" alt="logo" height="30px"/>
-            </ImageWrapper>
         </NavBar>
     )
 }
 
 const NavBar = styled.div`
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    justify-content: center;
-    justify-items: center;
+    grid-template-columns: 1fr 5fr;
+   
+    justify-items: start;
     padding-bottom: 0.2rem;
     padding-top: 0.2rem;
     background-color: #FF4500;
@@ -38,16 +36,10 @@ const NavBar = styled.div`
 `
 const LinkWrapper = styled.div `
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 3fr;
     align-items: center;
-    
+    grid-column-gap: 1rem;
 `
 const NamSite = styled.div `
    
-`
-
-const ImageWrapper = styled.div `
-    display: grid;
-    align-items: center;
-    align-content: center;
 `

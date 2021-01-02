@@ -3,19 +3,8 @@ import {RedditContext} from '../contexts/AppContext';
 import { List, Button, } from 'antd';
 
 export default function AllSubs() {
-    const {allApi, setAllApi} = useContext(RedditContext);
+    const {allApi, handleClearSubs} = useContext(RedditContext);
     
-    
-    
-    async function handleClearSubs (item) {
-      const newApi = allApi
-     await delete newApi[item];
-      setAllApi((newApi) => {
-        return {...newApi};
-      });
-      localStorage.setItem('subs', JSON.stringify(allApi));
-      console.log(allApi)
-    }
     return (
         <>
     
@@ -31,24 +20,20 @@ export default function AllSubs() {
           
             renderItem={item => (
               <div>
-              
                 <List.Item
                   key={item}
                   actions={[
                     <Button type='danger' size="small" onClick={() => handleClearSubs(item)}>Delete</Button>
                   ]}
-          >
-            <List.Item.Meta
-                title={item}
-            />
-            
-          </List.Item> 
-          
-          <div style={{marginBottom: '30px'}}></div>
-      </div>
-      )}
-    />
-
-  </>
+                >
+                  <List.Item.Meta
+                      title={item}
+                  />    
+                </List.Item> 
+                <div style={{marginBottom: '30px'}}></div>
+              </div>
+             )}
+          />
+        </>
     )
 }
