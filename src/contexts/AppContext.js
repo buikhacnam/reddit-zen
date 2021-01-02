@@ -13,7 +13,7 @@ export default function AppContext({children}) {
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState({content: [], loading: true});
-    const [savedCm, setSavedCm] = useState(localData?(JSON.parse(localComments)):[]);
+    const [savedCm, setSavedCm] = useState(localComments?(JSON.parse(localComments)):[]);
     
     // API source for fetching
     function handleApiSource(source) {
