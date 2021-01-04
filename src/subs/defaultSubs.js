@@ -12,6 +12,6 @@ export const deFaultSubs = {
     'So Many Books, So Little Time': 'https://www.reddit.com/r/books.json',
     'Ask Reddit': 'https://www.reddit.com/r/AskReddit.json',
     'Explain Like Im Five' : 'https://www.reddit.com/r/explainlikeimfive.json',
-    'Am I the Asshole?' : 'https://www.reddit.com/r/AmItheAsshole/',
+    'Am I the Asshole?' : 'https://www.reddit.com/r/AmItheAsshole.json',
 };
 
